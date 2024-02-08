@@ -1,0 +1,26 @@
+import type { ReactNode, CSSProperties } from 'react';
+import type { PlacementType } from '../placements';
+export interface TourStepInfo {
+    arrow?: boolean | {
+        pointAtCenter: boolean;
+    };
+    target?: HTMLElement | (() => HTMLElement) | null | (() => null);
+    title: ReactNode;
+    description?: ReactNode;
+    placement?: PlacementType;
+    mask?: boolean;
+    className?: string;
+    style?: CSSProperties;
+}
+export interface TourStepProps extends TourStepInfo {
+    prefixCls?: string;
+    total?: number;
+    current?: number;
+    onClose?: () => void;
+    onFinish?: () => void;
+    renderPanel?: (step: TourStepProps, current: number) => ReactNode;
+    onPrev?: () => void;
+    onNext?: () => void;
+}
+declare const TourStep: (props: TourStepProps) => JSX.Element;
+export default TourStep;
